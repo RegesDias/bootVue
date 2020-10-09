@@ -12,6 +12,9 @@
         <li class="nav-item d-none d-sm-inline-block">
           <router-link class="nav-link" to="/contato">Contato</router-link>
         </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" v-on:click="sair()" class="nav-link">Sair</a>
+        </li>
       </ul>
 
       <!-- SEARCH FORM -->
@@ -128,6 +131,14 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods:{
+    sair(){
+      this.$store.commit('setUsuario', null);
+      sessionStorage.clear();
+      this.usuario = false;
+      this.$router.push('/login');
     }
   }
 }
